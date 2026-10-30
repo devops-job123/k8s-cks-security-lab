@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets (never commit!)
+*.key
+*.pem
+*.crt
+secrets/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
