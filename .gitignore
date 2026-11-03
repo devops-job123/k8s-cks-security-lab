@@ -1,16 +1,76 @@
-# OS
+# ===========================================
+# OS Files
+# ===========================================
 .DS_Store
 Thumbs.db
+*.swp
+*~
 
-# Secrets (never commit!)
+# ===========================================
+# IDE / Editor
+# ===========================================
+.vscode/
+.idea/
+*.iml
+
+# ===========================================
+# Kubernetes Secrets - NEVER commit plain secrets
+# Only SealedSecrets (*-sealedsecret.yaml) are safe
+# ===========================================
+*-secret.yaml
+!*-sealedsecret.yaml
+!sealed-secret.yaml
+!*secret*.example.yaml
+!*-secret-template.yaml
+
+# ===========================================
+# Credentials / Keys
+# ===========================================
 *.key
 *.pem
 *.crt
+*.p12
+*.pfx
 secrets/
+cosign.key
+cosign.pub
+!*-cosign.pub.txt
 
-# IDE
-.vscode/
-.idea/
+# ===========================================
+# Sealed Secrets - binaries (download from source)
+# ===========================================
+kubeseal
+kubeseal-*.tar.gz
+kubeseal-*-linux-amd64.tar.gz
+controller.yaml
+sealed-secrets-master-key.yaml
 
+# ===========================================
+# SBOM (regenerate as needed - change if you want to track)
+# ===========================================
+*-sbom.json
+*-sbom.spdx.json
+*-sbom.xml
+
+# ===========================================
 # Logs
+# ===========================================
 *.log
+logs/
+
+# ===========================================
+# Terraform (future)
+# ===========================================
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+
+# ===========================================
+# Temporary / Build
+# ===========================================
+tmp/
+*.tmp
+dist/
+build/
