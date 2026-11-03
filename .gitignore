@@ -74,3 +74,6 @@ tmp/
 *.tmp
 dist/
 build/
+
+# Allow only the small alpine SBOM as documentation example
+!08-sbom/alpine_3.19-sbom.json
