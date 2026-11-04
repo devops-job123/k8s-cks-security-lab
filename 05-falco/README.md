@@ -1,7 +1,7 @@
 # 05 - Falco (Runtime Security)
 
 ## Objective
-Deploy Falco to detect runtime threats (shell in container, sensitive file access).
+Deploy Falco to detect runtime threats (shell in container, sensitive file access, write to /etc).
 
 ## Installation
 
@@ -17,14 +17,17 @@ Deploy Falco to detect runtime threats (shell in container, sensitive file acces
 
 ## Test
 
-    # Create nginx pod
+### 1. Create nginx-test pod
+
     kubectl run nginx-test --image=nginx -n secure-app
 
-    # Trigger rule (read /etc/shadow)
+### 2. Trigger rule (read /etc/shadow)
+
     kubectl exec -it nginx-test -n secure-app -- cat /etc/shadow
 
-    # Check Falco logs
-    kubectl logs -l app.kubernetes.io/name=falco -n falco -c falco --tail=20 | grep Warning
+### 3. Check Falco logs
+
+    kubectl logs -l app.kubernetes.io/name=falco -n falco -c falco --tail=50 | grep Warning
 
 ## Custom Rule
 
@@ -44,6 +47,9 @@ Deploy Falco to detect runtime threats (shell in container, sensitive file acces
 
 ### Headlamp - Falco Pods
 ![](../screenshots/10-headlamp-falco.png)
+
+### Terminal - Falco Alert
+![](../screenshots/11-falco-alert.png)
 
 ## What I Learned
 - How to deploy Falco on Kubernetes
